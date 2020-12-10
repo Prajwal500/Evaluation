@@ -18,9 +18,10 @@ passport.use(new BearerStrategy(
                 token: token,
                 tokenExpiry: { $gte: new Date() }
             };
+            
 
             let user = await Employees.getData(queryObj);
-            
+            console.log("data",user);
             if (!user) {
                 return done(null, false);
             }

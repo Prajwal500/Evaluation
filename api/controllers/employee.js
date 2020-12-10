@@ -109,7 +109,9 @@ module.exports = function (mongoose, utils, config, constants, logger) {
     }
     employeeCtrl.addEmployeeTypes = async function (req, res) {
         try {
-            if (req.employee && req.employee.employeeType === 'superAdmin') {
+            
+            if (req.user && req.user.userType === 'superAdmin') {
+                
                 var employeeObj = {};
                 if (req.body.name) {
                     employeeObj.name = req.body.name;
@@ -290,7 +292,7 @@ module.exports = function (mongoose, utils, config, constants, logger) {
     employeeCtrl.updateEmployee = async function (req, res) {
         try {
 
-            if (req.employee && req.employee.employeeType === 'superAdmin') {
+            if (req.user && req.user.employeeType === 'superAdmin') {
 
                 var employeeObj = {};
 
@@ -342,7 +344,7 @@ module.exports = function (mongoose, utils, config, constants, logger) {
 
     employeeCtrl.deleteEmployee = async function (req, res) {
         try {
-            if (req.employee && req.employee.employeeType === 'superAdmin') {
+            if (req.user && req.user.employeeType === 'superAdmin') {
                 let data = await Employees.removeDataById(req.params.employeeId);
                 if (!data) {
                     return utils.sendCustomError(req, res, "HTTP_ERR", "DATA_NOT_EXISTS")

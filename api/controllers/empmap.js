@@ -127,22 +127,8 @@ module.exports = function (mongoose, utils, config, constants, logger) {
             queryObj.options = {
 
             };
-            if (req.query.limit) {
-                queryObj.options.limit = JSON.parse(req.query.limit)
-            }
-            if (req.query.skip) {
-                queryObj.options.skip = JSON.parse(req.query.skip);
-            }
-            if (req.query.sortField && req.query.sortOrder) {
-                console.log("------------------sortField", req.query.sortField, req.query.sortOrder);
-                var sortField = req.query.sortField;
-                var sortOrder = req.query.sortOrder;
-                queryObj.options.sort = { [`${sortField}`]: JSON.parse(sortOrder) };
-            };
-            // }
-            if (req.query.searchText) {
-                queryObj.query.name = { $regex: req.query.searchText, $options: 'i' }
-            };
+            
+           
             console.log("aaaaaaaaaaaaaaaaaaaaaaaaa--------", queryObj.query.questId);
 
             queryObj.populate = [{ path: 'empId' }, { path: 'questId' }];
