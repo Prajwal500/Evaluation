@@ -1,0 +1,7 @@
+{
+    "name": "Job Portal",
+    "version": "0.1.0",
+    "description": "APIs for job portal application",
+    "title": "Job Portal API documentation",
+    "url" : "localhost:4000/api/v1"
+  }
