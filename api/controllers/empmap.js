@@ -121,22 +121,19 @@ module.exports = function (mongoose, utils, config, constants, logger) {
             var queryObj = {};
             queryObj.query = {};
 
-            queryObj.query.questId = req.body.questionnaireId;
+            queryObj.query.status = false;
 
             console.log(queryObj)
-            queryObj.options = {
 
-            };
-            
-           
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaa--------", queryObj.query.questId);
+
+
 
             queryObj.populate = [{ path: 'empId' }, { path: 'questId' }];
             console.log(queryObj)
             let data = await Empmaps.getLists(queryObj);
             console.log("data----------------", data);
-            let count = await Empmaps.getCount(queryObj.query);
             
+
             if (data.length > 0) {
                 data.forEach(async element => {
                     var query = {
@@ -197,7 +194,7 @@ module.exports = function (mongoose, utils, config, constants, logger) {
 
     }
 
-    
+
 
 
 
